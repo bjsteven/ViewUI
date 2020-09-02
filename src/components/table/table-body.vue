@@ -115,8 +115,9 @@
                 this.$parent.dblclickCurrentRow(_index, rowKey);
             },
             contextmenuCurrentRow (_index, event, rowKey) {
-                event.stopPropagation();
-                if (this.$parent.contextMenu) event.preventDefault();
+                // repaire by steven 2020.09.02
+                // event.stopPropagation();
+                // if (this.$parent.contextMenu) event.preventDefault();
                 this.$parent.contextmenuCurrentRow(_index, rowKey, event);
             },
             selectStartCurrentRow (_index, event) {
