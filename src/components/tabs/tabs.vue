@@ -53,6 +53,8 @@
     import { oneOf, MutationObserver, findComponentsDownward } from '../../utils/assist';
     import Emitter from '../../mixins/emitter';
     import elementResizeDetectorMaker from 'element-resize-detector';
+    import Dropdown from '../dropdown'
+    import DropdownMenu from '../dropdown-menu'
 
     const prefixCls = 'ivu-tabs';
     const transitionTime = 300; // from CSS
@@ -81,7 +83,7 @@
     export default {
         name: 'Tabs',
         mixins: [ Emitter ],
-        components: { Icon, Render },
+        components: { Icon, Render, DropdownMenu, Dropdown },
         provide () {
             return { TabsInstance: this };
         },
