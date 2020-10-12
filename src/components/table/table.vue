@@ -1435,10 +1435,13 @@
             columns: {
                 handler () {
                     // todo 这里有性能问题，可能是左右固定计算属性影响的
-                    const colsWithId = this.makeColumnsId(this.columns);
+                    //[Fix Bug]You may have an infinite update loop in watcher with expression "columns"
+                    var tempClonedColumns = deepCopy(this.columns);
+                    var colsWithId = this.makeColumnsId(tempClonedColumns);
+                    //[Fix Bug End]
                     this.allColumns = getAllColumns(colsWithId);
                     this.cloneColumns = this.makeColumns(colsWithId);
-
+            
                     this.columnRows = this.makeColumnRows(false, colsWithId);
                     this.leftFixedColumnRows = this.makeColumnRows('left', colsWithId);
                     this.rightFixedColumnRows = this.makeColumnRows('right', colsWithId);
